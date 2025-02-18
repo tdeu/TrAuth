@@ -105,7 +105,10 @@ export const Header = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Tribal Authentica</span>
+<<<<<<< HEAD
             <span className="text-xs">TXT HERE</span>
+=======
+>>>>>>> 629a0c6 (Initial commit)
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">

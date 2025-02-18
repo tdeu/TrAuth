@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { hardhat } from "viem/chains";
+<<<<<<< HEAD
 import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { SwitchTheme } from "~~/components/SwitchTheme";
@@ -8,12 +9,21 @@ import { BuidlGuidlLogo } from "~~/components/assets/BuidlGuidlLogo";
 import { Faucet } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { useGlobalState } from "~~/services/store/store";
+=======
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { SwitchTheme } from "~~/components/SwitchTheme";
+import { Faucet } from "~~/components/scaffold-eth";
+import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
+>>>>>>> 629a0c6 (Initial commit)
 
 /**
  * Site footer
  */
 export const Footer = () => {
+<<<<<<< HEAD
   const nativeCurrencyPrice = useGlobalState(state => state.nativeCurrency.price);
+=======
+>>>>>>> 629a0c6 (Initial commit)
   const { targetNetwork } = useTargetNetwork();
   const isLocalNetwork = targetNetwork.id === hardhat.id;
 
@@ -22,6 +32,7 @@ export const Footer = () => {
       <div>
         <div className="fixed flex justify-between items-center w-full z-10 p-4 bottom-0 left-0 pointer-events-none">
           <div className="flex flex-col md:flex-row gap-2 pointer-events-auto">
+<<<<<<< HEAD
             {nativeCurrencyPrice > 0 && (
               <div>
                 <div className="btn btn-primary btn-sm font-normal gap-1 cursor-auto">
@@ -30,6 +41,8 @@ export const Footer = () => {
                 </div>
               </div>
             )}
+=======
+>>>>>>> 629a0c6 (Initial commit)
             {isLocalNetwork && (
               <>
                 <Faucet />
@@ -40,6 +53,7 @@ export const Footer = () => {
               </>
             )}
           </div>
+<<<<<<< HEAD
           <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
         </div>
       </div>
@@ -74,6 +88,13 @@ export const Footer = () => {
             </div>
           </div>
         </ul>
+=======
+          <div className="flex items-center gap-4">
+            <p className="text-sm">© 2025 Tribal Authentica. All rights reserved.</p>
+            <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+          </div>
+        </div>
+>>>>>>> 629a0c6 (Initial commit)
       </div>
     </div>
   );

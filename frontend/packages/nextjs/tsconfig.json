@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "target": "es2020",
+=======
+    "target": "es5",
+>>>>>>> 629a0c6 (Initial commit)
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,7 +13,11 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
+<<<<<<< HEAD
     "moduleResolution": "Bundler",
+=======
+    "moduleResolution": "node",
+>>>>>>> 629a0c6 (Initial commit)
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -21,7 +29,12 @@
       {
         "name": "next"
       }
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "types": ["react", "node"]
+>>>>>>> 629a0c6 (Initial commit)
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

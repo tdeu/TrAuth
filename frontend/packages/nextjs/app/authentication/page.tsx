@@ -3,6 +3,11 @@
 import React, { useState } from 'react';
 import { createPublicClient, http, createWalletClient, custom } from 'viem';
 import { sepolia } from 'viem/chains';
+<<<<<<< HEAD
+=======
+import axios from 'axios';
+import { modelService, PredictionResult } from '../../services/modelService';
+>>>>>>> 629a0c6 (Initial commit)
 
 const contractAddress = '0xbcdd5cc1cd0fa804ae1ea14e05922a6222a5bc9f';
 
@@ -27,6 +32,7 @@ const generateRandomTribalGroup = () => {
   return groups[Math.floor(Math.random() * groups.length)];
 };
 
+<<<<<<< HEAD
 export default function MaskSubmissionPage() {
   const [status, setStatus] = useState('');
   const [ipfsHash, setIpfsHash] = useState('');
@@ -43,19 +49,41 @@ export default function MaskSubmissionPage() {
     event: React.ChangeEvent<HTMLInputElement>,
     setImage: (value: string | null) => void
   ) => {
+=======
+interface AIPrediction {
+  predictions: Array<{
+    tribalGroup: string;
+    region: string;
+    probability: number;
+  }>;
+}
+
+export default function MaskSubmissionPage() {
+  const [status, setStatus] = useState('');
+  const [ipfsHash, setIpfsHash] = useState('');
+  const [maskImage, setMaskImage] = useState<string | null>(null);
+  const [aiPrediction, setAiPrediction] = useState<AIPrediction | null>(null);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+>>>>>>> 629a0c6 (Initial commit)
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const result = e.target?.result;
         if (typeof result === 'string') {
+<<<<<<< HEAD
           setImage(result);
+=======
+          setMaskImage(result);
+>>>>>>> 629a0c6 (Initial commit)
         }
       };
       reader.readAsDataURL(file);
     }
   };
 
+<<<<<<< HEAD
   const simulateAnalysis = () => {
     setStatus('Machine is analyzing your mask, please hold on...');
     setTimeout(() => {
@@ -98,6 +126,28 @@ export default function MaskSubmissionPage() {
       setAnalysisComplete(true);
       setStatus('Machine check done, lets see what humans think of it now...');
     }, 3000);
+=======
+  const handleAnalysis = async () => {
+    if (!maskImage) return;
+    setStatus('AI is analyzing your mask...');
+    
+    try {
+      // Simulate loading time
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const predictions = await modelService.predict();
+      setAiPrediction({ predictions: predictions.map(pred => ({
+        tribalGroup: pred.tribe,
+        region: pred.region,
+        probability: pred.probability
+      }))});
+      
+      setStatus('AI analysis complete!');
+    } catch (error) {
+      console.error('AI analysis failed:', error);
+      setStatus('Error during AI analysis. Please try again.');
+    }
+>>>>>>> 629a0c6 (Initial commit)
   };
 
   const handleSubmitMask = async () => {
@@ -143,6 +193,7 @@ export default function MaskSubmissionPage() {
         <h1 className="text-4xl font-bold mb-8">Mask Submission and Analysis</h1>
         
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<<<<<<< HEAD
           <h2 className="text-2xl font-bold mb-4">Upload Mask Images</h2>
           <div className="flex justify-between mb-4">
             <div>
@@ -198,6 +249,66 @@ export default function MaskSubmissionPage() {
               </div>
             </div>
           </>
+=======
+          <h2 className="text-2xl font-bold mb-4">Upload Mask Image</h2>
+          <p className="text-gray-600 mb-4">Please upload a clear front view of your mask:</p>
+          
+          <div className="border p-4 rounded mb-4">
+            <input 
+              type="file" 
+              onChange={handleImageUpload} 
+              className="mb-2"
+              accept="image/*"
+            />
+            {maskImage && (
+              <div className="mt-4">
+                <img 
+                  src={maskImage} 
+                  alt="Mask" 
+                  className="max-w-md mx-auto rounded shadow-lg" 
+                />
+              </div>
+            )}
+          </div>
+
+          <button 
+            onClick={handleAnalysis} 
+            disabled={!maskImage}
+            className={`w-full font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              !maskImage ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700 text-white'
+            }`}
+          >
+            {!maskImage ? 'Please Upload an Image' : 'Analyze Mask'}
+          </button>
+        </div>
+
+        {aiPrediction && (
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 className="text-2xl font-bold mb-4">AI Analysis Results</h2>
+            
+            <div className="space-y-6">
+              {aiPrediction.predictions.map((pred, index) => (
+                <div key={index} className="mb-4">
+                  <div className="flex justify-between mb-1">
+                    <span className="font-medium">
+                      {`${index + 1}. ${pred.region}/${pred.tribalGroup}`}
+                    </span>
+                    <span>{(pred.probability * 100).toFixed(1)}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div 
+                      className={`h-2.5 rounded-full ${
+                        index === 0 ? 'bg-green-600' : 
+                        index === 1 ? 'bg-blue-600' : 'bg-yellow-600'
+                      }`}
+                      style={{width: `${pred.probability * 100}%`}}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+>>>>>>> 629a0c6 (Initial commit)
         )}
 
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

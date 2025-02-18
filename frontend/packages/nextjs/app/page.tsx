@@ -1,12 +1,18 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< HEAD
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 
 const Home = () => {
   const { address: connectedAddress } = useAccount();
 
+=======
+import type { NextPage } from "next";
+
+const Home: NextPage = () => {
+>>>>>>> 629a0c6 (Initial commit)
   return (
     <div className="flex flex-col min-h-screen bg-base-100">
       <main className="flex-grow container mx-auto px-4 py-8">
@@ -27,7 +33,13 @@ const Home = () => {
                 <li>Get NFT of your mask</li>
               </ul>
               <div className="card-actions justify-end">
+<<<<<<< HEAD
                 <Link href="/authentication" className="btn">Authenticate My Mask</Link>
+=======
+                <Link href="/authentication" className="btn">
+                  Authenticate My Mask
+                </Link>
+>>>>>>> 629a0c6 (Initial commit)
               </div>
             </div>
           </div>
@@ -42,7 +54,13 @@ const Home = () => {
                 <li>Contribute to mask history</li>
               </ul>
               <div className="card-actions justify-end">
+<<<<<<< HEAD
                 <Link href="/validator-dashboard" className="btn">Start Validating</Link>
+=======
+                <Link href="/validator-dashboard" className="btn">
+                  Start Validating
+                </Link>
+>>>>>>> 629a0c6 (Initial commit)
               </div>
             </div>
           </div>
@@ -57,7 +75,13 @@ const Home = () => {
                 <li>Build your digital collection</li>
               </ul>
               <div className="card-actions justify-end">
+<<<<<<< HEAD
                 <Link href="/marketplace" className="btn">Explore Marketplace</Link>
+=======
+                <Link href="/marketplace" className="btn">
+                  Explore Marketplace
+                </Link>
+>>>>>>> 629a0c6 (Initial commit)
               </div>
             </div>
           </div>
@@ -67,6 +91,7 @@ const Home = () => {
           <h2 className="text-3xl font-semibold mb-6 text-center">Learn to Earn</h2>
           <p className="text-center mb-6">Expand your knowledge about African masks and earn tokens while doing so!</p>
           <div className="text-center">
+<<<<<<< HEAD
             <Link href="/learn" className="btn btn-primary btn-lg">Start Learning</Link>
           </div>
         </section>
@@ -83,6 +108,14 @@ const Home = () => {
       <footer className="w-full bg-neutral text-neutral-content p-4 text-center">
         <p>© 2024 Tribal Authentica. All rights reserved.</p>
       </footer>
+=======
+            <Link href="/learn" className="btn btn-primary btn-lg">
+              Start Learning
+            </Link>
+          </div>
+        </section>
+      </main>
+>>>>>>> 629a0c6 (Initial commit)
     </div>
   );
 };

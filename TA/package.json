@@ -1,0 +1,11 @@
+{
+  "name": "ta-root",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "yarn workspace @se-2/nextjs dev",
+    "start": "yarn workspace @se-2/nextjs dev"
+  }
+} 

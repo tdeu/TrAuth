@@ -1,0 +1,33 @@
+flowchart TB
+    Start([Start]) --> Wallet[Connect MetaMask to Sepolia]
+    Wallet --> Upload[Upload Mask Photos\n1-2 images required]
+    Upload --> Metadata[Optional: Add metadata\n- Country of origin\n- Known tribal group]
+    
+    Metadata --> AIProcess[AI Model Processing]
+    AIProcess --> AIResults[Display Top 3\nTribal Group Probabilities]
+    
+    AIResults --> Submit[Submit to Validation Pool]
+    
+    Submit --> ValidatorPool[Validation Pool\n10 Validators Required]
+    
+    subgraph Validation Process
+        ValidatorPool --> Auth{Authenticate\nYes/No}
+        Auth -->|Yes| Tribe{Select Tribe}
+        Auth -->|No| Reject([Mask Rejected])
+        
+        Tribe --> |Choose| Options[4 Options:\n- Top 3 AI suggestions\n- Other tribe]
+    end
+    
+    Options --> Consensus{8/10\nConsensus?}
+    Consensus -->|Yes| NFTMint[Mint NFT with:\n- Image\n- Authentication Label\n- Tribal Group]
+    Consensus -->|No| Reject
+    
+    NFTMint --> Marketplace[Available for\nMarketplace Trading]
+    
+    subgraph AI Improvement
+        NFTMint -.-> Feedback[Feed Validated Data\nBack to AI Model]
+        Feedback -.-> ModelImprovement[Model Improvement]
+    end
+
+    style Validation Process fill:#f0f0f0,stroke:#333,stroke-width:2px
+    style AI Improvement fill:#e6e6e6,stroke:#666,stroke-dasharray: 5 5
